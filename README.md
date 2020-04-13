@@ -1,37 +1,36 @@
 # vue仿抖音
 
-#### 介绍
-仿抖音
+## 2019年12月最新更新
+新增留言功能，优化安卓微信环境境下播放不流畅问题
 
-#### 软件架构
-软件架构说明
+## 基本介绍
+制作仿抖音视频列表遇到很多坑，特别是安卓微信内置浏览器，让人脑壳疼,核心代码不多 便于理解
 
+图标css使用的事iconfot字体库，优化页面加载速度 http://at.alicdn.com/t/font_1048614_mi5i5ba1uag.css
 
-#### 安装教程
+组件用到了vant 中的swiper滑动组件
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## video原生参数介绍
+```
+h5 原生 video 属性
+webkit-playsinline ios 小窗播放，使视频不脱离文本流，安卓则无效
+微信内置x5内核，
+x5-video-player-type="h5-page" 启用H5播放器,是wechat安卓版特性，添加此属性，微信浏览器会自动将视频置为全屏
+x5-video-player-fullscreen="true" 全屏设置，设置为 true 是防止横屏
+x5-video-orientation 控制横竖屏 landscape 横屏，portrain竖屏； 默认portrain
+poster：封面
+src：播放地址
+loop防止播放视频结束后，显示腾讯的广告
+```
+## 安装步奏
+```
+cnpm install
+```
 
-#### 使用说明
+### 安装后运行
+```
+cnpm run serve
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
