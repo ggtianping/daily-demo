@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>瀑布流布局</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        .main {
+            position: relative;
+        }
+        .box {
+            display:inline-block;
+            width: 200px;
+            vertical-align: top;
+            padding: 8px;
+        }
+        img{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box"><img src="imgs/001.png" alt=""></div>
+        <div class="box"><img src="imgs/002.png" alt=""></div>
+        <div class="box"><img src="imgs/003.png" alt=""></div>
+        <div class="box"><img src="imgs/004.png" alt=""></div>
+        <div class="box"><img src="imgs/005.png" alt=""></div>
+        <div class="box"><img src="imgs/006.png" alt=""></div>
+        <div class="box"><img src="imgs/007.png" alt=""></div>
+        <div class="box"><img src="imgs/008.png" alt=""></div>
+        <div class="box"><img src="imgs/009.png" alt=""></div>
+        <div class="box"><img src="imgs/010.png" alt=""></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+        walterFall()
+    });
+    function walterFall(){
+        var box = $('.box');
+        var boxWidth = box.outerWidth();
+        var screenWidth = $(window).width();
+        // 求出列数
+        var cols = parseInt(screenWidth/boxWidth);
+        // 创建数组
+        var heightArr = [];
+        // 对图片进行遍历循环，第一行不需要定位，取高度值，其他行数进行定位处理
+        $.each(box,function(index,item){
+            var boxHeight = $(item).outerHeight();
+            // 先判断是否为第一排
+            if( index < cols ){
+                console.log(index);
+                heightArr[index] = boxHeight;
+            }else{
+                // 数组中最小的值
+                var minBoxHeight = Math.min(...heightArr);//ES6扩展运算符，序列化处理
+                // 最小索引 $.inArray();查找对应数组中指定的值，返回索引（未找到返回-1）
+                var minBoxIndex = $.inArray(minBoxHeight,heightArr);
+                console.log(minBoxIndex);
+                $(item).css({
+                    position:'absolute',
+                    left: minBoxIndex * boxWidth +'px',
+                    top: minBoxHeight + 'px'
+                });
+                // 高度追加
+                heightArr[minBoxIndex] += boxHeight;
+            }
+        })
+    };
+    // 窗口大小改变
+        $(window).resize(function () {
+            walterFall();
+        });
+</script>
