@@ -37,9 +37,13 @@
 </body>
 </html>
 <script type="text/javascript">
-    $(function(){
-        walterFall()
-    });
+// $(function(){})
+$(window).on('load', function(event) {
+     walterFall();
+});
+    // $(function(){
+    //     walterFall();
+    // });
     function walterFall(){
         var box = $('.box');
         var boxWidth = box.outerWidth();
